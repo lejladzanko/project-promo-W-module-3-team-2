@@ -1,12 +1,12 @@
 import { useState } from "react";
+import Header from "./Header";
+import Button from "./Button";
+import Footer from "./Footer";
 import '../scss/App.scss';
-//Importar las fotos
-import logoAdalab from '../images/adalab.png';
-import avatar from '../images/avatar.webp';
-import ebookImg from '../images/ebook-example.jpg';
-import gitHubIcon from '../images/github.svg';
-import globeIcon from '../images/globe-solid.svg';
-import laptopIcon from '../images/laptop-code-solid.svg';
+// import avatar from '../images/avatar.webp';
+// import ebookImg from '../images/ebook-example.jpg';
+// import gitHubIcon from '../images/github.svg';
+// import globeIcon from '../images/globe-solid.svg';
 
 
 function App() {
@@ -58,13 +58,7 @@ function App() {
   return (
     <div className="container">
 
-      <header className="header">
-        <a className="header__brand" href="./" title="Haz click para volver a la página inicial">
-          <img className="header__companyLogo" src={laptopIcon} alt="Logo proyectos molones" />
-          <h1 className="header__title">Proyectos molones</h1>
-        </a>
-        <img className="logoSponsor" src={logoAdalab} alt="Logo Adalab" />
-      </header>
+      <Header/>
 
       <main className="main">
         <section className="hero">
@@ -124,21 +118,15 @@ function App() {
             <input className="addForm__input" type="text" name="autor" id="autor" placeholder="Nombre" onChange={handleUserName} />
             <input className="addForm__input" type="text" name="job" id="job" placeholder="Trabajo" onChange={handleUserJob} />
           </fieldset>
-
           <fieldset className="addForm__group--upload">
-            <label htmlFor="image" className="button">Subir foto del proyecto</label>
-            <input className="addForm__hidden" type="file" name="image" id="image" />
-            <label htmlFor="photo" className="button">Subir foto de la autora</label>
-            <input className="addForm__hidden" type="file" name="photo" id="photo" />
+            <Button text="Subir foto del proyecto"/>
+            <Button text="Subir foto de la autora"/>
             <button className="button--large">Guardar proyecto</button>
           </fieldset>
-
         </form>
       </main>
 
-      <footer className="footer">
-        <img className="logoSponsor" src={logoAdalab} alt="Logo Adalab" />
-      </footer>
+    <Footer/>
     </div>
   );
 }
