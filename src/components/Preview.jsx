@@ -1,9 +1,6 @@
 import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
-// import ebookImg from '../images/ebook-example.jpg';
-// import avatar from '../images/avatar.webp';
-// import gitHubIcon from '../images/github.svg';
-// import globeIcon from '../images/globe-solid.svg';
+
 
 function Preview({
   userJob,

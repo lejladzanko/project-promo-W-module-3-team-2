@@ -1,16 +1,12 @@
 @import '../core/variables';
-// @import ebookImg from '../';
-// @import ebookImg from '../images/ebook-example.jpg';
-// @import avatar from '../images/avatar.webp';
-// @import gitHubIcon from '../images/github.svg';
-// @import globeIcon from '../images/globe-solid.svg';
+
 
 .preview .projectImage {
     width: 100%;
     aspect-ratio: 1 / 1;
     outline: solid 1px pink;
   
-    background-image: url('../images/ebook-example.jpg');
+    background-image: url('./src/images/ebook-example.jpg');
     background-position: top center;
     background-size: cover;
   }
@@ -80,7 +76,7 @@
     width: 75px;
     height: 75px;
     border-radius: 50%;
-    background-image: url('../images/avatar.webp');
+    background-image: url('./src/images/avatar.webp');
     background-position: center;
     background-size: cover;
     margin-bottom: 0.8rem;
@@ -123,3 +119,22 @@
   }
   
   
+
+  /* ICONS */
+
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 $color-greyish-brown-two;
+}
+
+.icon__www {
+  background-image: url('./src/images/globe-solid.svg');
+}
+
+.icon__github {
+  background-image: url('./src/images/github.svg');
+}
