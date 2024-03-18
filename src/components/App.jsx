@@ -4,10 +4,7 @@ import Preview from "./Preview";
 import Button from "./Button";
 import Footer from "./Footer";
 import '../scss/App.scss';
-// import avatar from '../images/avatar.webp';
-// import ebookImg from '../images/ebook-example.jpg';
-// import gitHubIcon from '../images/github.svg';
-// import globeIcon from '../images/globe-solid.svg';
+
 
 
 function App() {
