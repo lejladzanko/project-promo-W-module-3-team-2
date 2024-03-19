@@ -110,6 +110,12 @@
     border-image-slice: 1;
     border-radius: 20px;
     background-color: $color-dark-lilac;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; 
+  }
+
+  .button--link:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    background-color: darken($color-dark-lilac, 5%); 
   }
 
   .button--large {
@@ -141,3 +147,7 @@
     text-transform: capitalize;
   }
     
+  .button--link:active, .button--large:active {
+    transform: scale(0.98); 
+    transition: transform 0.2s ease; 
+  }

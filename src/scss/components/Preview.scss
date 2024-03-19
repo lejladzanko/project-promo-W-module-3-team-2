@@ -4,13 +4,11 @@
 .preview .projectImage {
     width: 100%;
     aspect-ratio: 1 / 1;
-    outline: solid 1px pink;
-  
-    background-image: url('./src/images/ebook-example.jpg');
+    background-image: url('./src/images/illustration.png');
     background-position: top center;
     background-size: cover;
   }
-  
+
   .preview .card {
     margin-inline: 20px;
   
@@ -34,8 +32,11 @@
     background-image: linear-gradient(to bottom, $color-white, $color-white), linear-gradient(to bottom, $color-white 0%, rgba(0, 0, 0, 0));
     background-origin: border-box;
     background-clip: content-box, border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #E0E0E0; 
+    background-image: linear-gradient(to bottom, #FFFFFF, #F7F7F7);
   }
-  
+
   .card .card__projectTitle {
     grid-column: 2;
     position: relative;
@@ -117,10 +118,6 @@
   .card .card__technologies {
     font-family: $font-card-tech;
   }
-  
-  
-
-  /* ICONS */
 
 .icon {
   width: 1.6rem;
@@ -129,6 +126,11 @@
   cursor: pointer;
   border-radius: 50%;
   box-shadow: 0 0 5px 0 $color-greyish-brown-two;
+  transition: opacity 0.3s ease;
+}
+
+.icon:hover {
+  opacity: 0.7; 
 }
 
 .icon__www {
