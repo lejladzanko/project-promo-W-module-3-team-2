@@ -17,21 +17,5 @@ Este proyecto ha sido desarrollado utilizando las siguientes tecnologías:
 - Sass: Para la escritura de los estilos, aprovechando las funcionalidades avanzadas de este preprocesador CSS.
 - Git: Para el control de versiones y colaboración en equipo, utilizando GitHub como plataforma de hosting y revisión de código.
 
-## Empezando 🚀
-Para ejecutar este proyecto localmente, sigue estos pasos:
-
-Clona el repositorio:
-bash
-Copy code
-git clone https://github.com/tu-usuario/gestor-proyectos-molones.git
-Instala las dependencias:
-Copy code
-npm install
-Ejecuta la aplicación:
-sql
-Copy code
-npm start
-Esto iniciará la aplicación en localhost:3000 en tu navegador por defecto.
-
 ## Licencia 📄
 Este proyecto está bajo la Licencia MIT - vea el archivo LICENSE.md para más detalles.
