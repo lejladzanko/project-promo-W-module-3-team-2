@@ -1,8 +1,20 @@
-import Button from "./Button";
+// import Button from "./Button";
+import GetAvatar from "./GetAvatar";
 import "../scss/components/Form.scss";
 import PropTypes from "prop-types";
 
-function Form({handleUserName, handleUserJob, handleProjectName, handleSlogan, handleRepoLink, handleDemoLink, handleTechnologies, handleDescription}) {
+function Form({
+  handleUserName, 
+  handleUserJob, 
+  handleProjectName, 
+  handleSlogan, 
+  handleRepoLink, 
+  handleDemoLink, 
+  handleTechnologies, 
+  handleDescription, 
+  setUpdateAvatar
+  }) {
+
   return (
     <form className="addForm">
     <h2 className="title">Información</h2>
@@ -24,8 +36,8 @@ function Form({handleUserName, handleUserJob, handleProjectName, handleSlogan, h
       <input className="addForm__input" type="text" name="job" id="job" placeholder="Trabajo" onChange={handleUserJob} />
     </fieldset>
     <fieldset className="addForm__group--upload">
-      <Button text="Subir foto del proyecto"/>
-      <Button text="Subir foto de la autora"/>
+      <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto del proyecto"/>
+      <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto de la autora"/>
       <button className="button--large">Guardar proyecto</button>
     </fieldset>
   </form>
@@ -41,6 +53,7 @@ Form.propTypes = {
     handleDemoLink: PropTypes.func.isRequired,
     handleTechnologies: PropTypes.func.isRequired,
     handleDescription: PropTypes.func.isRequired,
+    setUpdateAvatar: PropTypes.func.isRequired
 }
 export default Form;
 

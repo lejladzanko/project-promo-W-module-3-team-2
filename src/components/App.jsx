@@ -16,6 +16,7 @@ function App() {
   );
   const [userName, setUserName] = useState("Emmelie Björklund");
   const [userJob, setUserJob] = useState("Full Stack Developer");
+  const [updateAvatar, setUpdateAvatar] = useState(`url('/src/images/avatar.webp')`);
 
   const handleProjectName = (event) => {
     setProjectName(event.target.value);
@@ -67,9 +68,20 @@ function App() {
           usedTechs={usedTechs}
           repoLink={repoLink}
           demoLink={demoLink}
+          updateAvatar={updateAvatar}
         />
 
-        <Form handleUserName={handleUserName} handleUserJob={handleUserJob} handleProjectName={handleProjectName} handleSlogan={handleSlogan} handleRepoLink={handleRepoLink} handleDemoLink={handleDemoLink} handleTechnologies={handleTechnologies} handleDescription={handleDescription} />
+        <Form 
+          handleUserName={handleUserName} 
+          handleUserJob={handleUserJob} 
+          handleProjectName={handleProjectName} 
+          handleSlogan={handleSlogan} 
+          handleRepoLink={handleRepoLink} 
+          handleDemoLink={handleDemoLink} 
+          handleTechnologies={handleTechnologies} 
+          handleDescription={handleDescription} 
+          setUpdateAvatar={setUpdateAvatar}
+        />
       </main>
 
       <Footer />

@@ -10,6 +10,7 @@ function Preview({
   usedTechs,
   repoLink,
   demoLink,
+  updateAvatar
 }) {
   return (
     <section className="preview">
@@ -22,7 +23,7 @@ function Preview({
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto"></div>
+          <div className="card__authorPhoto" style={{backgroundImage: `url(${updateAvatar})`}}></div>
           <p className="card__job">{userJob}</p>
           <h3 className="card__name">{userName}</h3>
         </div>
@@ -68,6 +69,7 @@ Preview.propTypes = {
   usedTechs: PropTypes.string.isRequired,
   repoLink: PropTypes.string.isRequired,
   demoLink: PropTypes.string.isRequired,
+  updateAvatar: PropTypes.string.isRequired
 };
 
 export default Preview;
