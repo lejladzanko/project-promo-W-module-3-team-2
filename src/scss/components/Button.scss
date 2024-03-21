@@ -1,4 +1,4 @@
-@import '../core/variables';
+@import '../core/Variables';
 
 .button {
     display: block;
@@ -19,3 +19,7 @@
     cursor: pointer;
   }
 
+  .button:hover {
+    transform: translateY(-2px); 
+    background-image: linear-gradient(to right, $color-dark-lilac 0%, #c0b7e8 100%); 
+  }

@@ -1,8 +1,21 @@
-# React + Vite
+## Gestor de Proyectos Molones 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introducción 📌
+El "Gestor de Proyectos Molones" es una aplicación web innovadora que permite a los usuarios destacar y compartir sus proyectos personales o favoritos de una manera visualmente atractiva y profesional. Diseñada con React y técnicas de diseño responsivo, esta herramienta es perfecta para desarrolladores, diseñadores y creativos que desean mostrar sus proyectos en una tarjeta de proyecto personalizada.
 
-Currently, two official plugins are available:
+## Características 🛠️
+- Interfaz Intuitiva: Formulario simple para ingresar detalles del proyecto, incluyendo nombre, slogan, tecnologías utilizadas, y más.
+- Diseño Responsivo: Adaptabilidad total a dispositivos móviles, tablets y desktops, garantizando una experiencia de usuario excelente en cualquier dispositivo.
+- Personalización: Opciones de personalización de estilos con Sass, permitiendo a los usuarios adaptar el aspecto de sus tarjetas a su gusto.
+- Almacenamiento Local: Guarda la información del formulario en el localStorage para no perder los datos al recargar la página.
+- Integración con API: Opción para enviar los datos del formulario a una API y obtener una URL con la tarjeta de proyecto publicada.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías Utilizadas 💻
+Este proyecto ha sido desarrollado utilizando las siguientes tecnologías:
+
+- React: Para la creación de la interfaz de usuario y la lógica de la aplicación.
+- Sass: Para la escritura de los estilos, aprovechando las funcionalidades avanzadas de este preprocesador CSS.
+- Git: Para el control de versiones y colaboración en equipo, utilizando GitHub como plataforma de hosting y revisión de código.
+
+## Licencia 📄
+Este proyecto está bajo la Licencia MIT - vea el archivo LICENSE.md para más detalles.

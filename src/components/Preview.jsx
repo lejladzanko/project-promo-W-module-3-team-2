@@ -1,7 +1,6 @@
 import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
 
-
 function Preview({
   userJob,
   userName,
@@ -12,7 +11,6 @@ function Preview({
   repoLink,
   demoLink,
 }) {
-
   return (
     <section className="preview">
       <div className="projectImage"></div>
