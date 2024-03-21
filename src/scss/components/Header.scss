@@ -20,7 +20,7 @@
 }
 
 .header .header__companyLogo {
-  height: 31px;
+  max-height: 31px;
   color: $color-white;
   transition: transform 0.3s ease;
 }
@@ -34,4 +34,5 @@
     text-transform: capitalize;
     color: $color-white;
     transition: color 0.3s ease; 
+    font-size: 15px; 
   }

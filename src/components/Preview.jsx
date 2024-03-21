@@ -38,7 +38,7 @@ function Preview({
 
             <a
               className="icon icon__www"
-              href={repoLink}
+              href={demoLink}
               target="_blank"
               title="Haz click para ver el proyecto online"
             >
@@ -46,7 +46,7 @@ function Preview({
             </a>
             <a
               className="icon icon__github"
-              href={demoLink}
+              href={repoLink}
               target="_blank"
               title="Haz click para ver el código del proyecto"
             >
