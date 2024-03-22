@@ -2,13 +2,13 @@ import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
 
 function Preview({
-  addFormData, updateAvatar }) {
+  addFormData, updateAvatar, updateProjectImg }) {
 
 
 
   return (
     <section className="preview">
-      <div className="projectImage"></div>
+      <div className="projectImage" style={{ backgroundImage: `url(${updateProjectImg})` }}>  </div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">

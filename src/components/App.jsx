@@ -6,18 +6,12 @@ import Footer from "./Footer";
 import "../scss/App.scss";
 
 function App() {
-  /*const [projectName, setProjectName] = useState("Personal Project Card");
-  const [slogan, setSlogan] = useState("Elegant Workspace");
-  const [repoLink, setRepoLink] = useState("");
-  const [demoLink, setDemoLink] = useState("");
-  const [usedTechs, setUsedTechs] = useState("React Js-HTML-CSS");
-  const [descriptions, setDescriptions] = useState(
-    `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur dolorem facere impedit aut voluptatibus nam recusandae totam adipisci illo consectetur optio nesciunt, unde natus ipsa similique asperiores ut quod quos?`
-  );
-  const [userName, setUserName] = useState("Emmelie Björklund");
-  const [userJob, setUserJob] = useState("Full Stack Developer");*/
+
 
   const [updateAvatar, setUpdateAvatar] = useState(`url('/src/images/avatar.webp')`);
+
+  const [updateProjectImg, setProjectImg] = useState(`url('/src/images/illustration.png')`);
+
   const [addFormData, setAddFormData] = useState({
 
     projectName: "",
@@ -58,9 +52,14 @@ function App() {
 
         <Preview
           addFormData={addFormData} setAddFormData={setAddFormData} updateAvatar={updateAvatar}
+          updateProjectImg={updateProjectImg}
+
         />
 
-        <Form handleFormAdd={handleFormAdd} addFormData={addFormData} setUpdateAvatar={setUpdateAvatar} />
+        <Form handleFormAdd={handleFormAdd} addFormData={addFormData} setUpdateAvatar={setUpdateAvatar}
+          setProjectImg={setProjectImg}
+
+        />
       </main>
 
       <Footer />
