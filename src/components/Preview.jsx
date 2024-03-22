@@ -2,16 +2,10 @@ import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
 
 function Preview({
-  userJob,
-  userName,
-  projectName,
-  slogan,
-  descriptions,
-  usedTechs,
-  repoLink,
-  demoLink,
-  updateAvatar
-}) {
+  addFormData }) {
+
+
+
   return (
     <section className="preview">
       <div className="projectImage"></div>
@@ -23,23 +17,23 @@ function Preview({
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto" style={{backgroundImage: `url(${updateAvatar})`}}></div>
-          <p className="card__job">{userJob}</p>
-          <h3 className="card__name">{userName}</h3>
+          <div className="card__authorPhoto"></div>
+          <p className="card__job">{addFormData.userJob || "Full Stack Developer"}</p>
+          <h3 className="card__name">{addFormData.userName || "Emmelie Björklund"}</h3>
         </div>
 
         <div className="card__project">
-          <h3 className="card__name">{projectName}</h3>
-          <p className="card__slogan">{slogan}</p>
+          <h3 className="card__name">{addFormData.projectName || "Personal Project Card"}</h3>
+          <p className="card__slogan">{addFormData.slogan || "Elegant Workspace"}</p>
           <h3 className="card__descriptionTitle">Product description</h3>
-          <p className="card__description">{descriptions}</p>
+          <p className="card__description">{addFormData.descriptions || `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur dolorem facere impedit aut voluptatibus nam recusandae totam adipisci illo consectetur optio nesciunt, unde natus ipsa similique asperiores ut quod quos?`}</p>
 
           <div className="card__technicalInfo">
-            <p className="card__technologies">{usedTechs}</p>
+            <p className="card__technologies">{addFormData.usedTechs || "React Js-HTML-CSS"}</p>
 
             <a
               className="icon icon__www"
-              href={demoLink}
+              href={addFormData.demoLink}
               target="_blank"
               title="Haz click para ver el proyecto online"
             >
@@ -47,7 +41,7 @@ function Preview({
             </a>
             <a
               className="icon icon__github"
-              href={repoLink}
+              href={addFormData.repoLink}
               target="_blank"
               title="Haz click para ver el código del proyecto"
             >
@@ -61,15 +55,8 @@ function Preview({
 }
 
 Preview.propTypes = {
-  userJob: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  projectName: PropTypes.string.isRequired,
-  slogan: PropTypes.string.isRequired,
-  descriptions: PropTypes.string.isRequired,
-  usedTechs: PropTypes.string.isRequired,
-  repoLink: PropTypes.string.isRequired,
-  demoLink: PropTypes.string.isRequired,
-  updateAvatar: PropTypes.string.isRequired
+  addFormData: PropTypes.object.isRequired,
+
 };
 
 export default Preview;
