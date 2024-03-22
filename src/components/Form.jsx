@@ -1,9 +1,9 @@
-// import Button from "./Button";
+//import Button from "./Button";
 import GetAvatar from "./GetAvatar";
 import "../scss/components/Form.scss";
 import PropTypes from "prop-types";
 
-function Form({ handleFormAdd, addFormData, setAddFormData
+function Form({ handleFormAdd, addFormData, setUpdateAvatar
 }) {
 
 
@@ -68,8 +68,9 @@ function Form({ handleFormAdd, addFormData, setAddFormData
           onChange={handleFormAdd} />
       </fieldset>
       <fieldset className="addForm__group--upload">
-        <Button text="Subir foto del proyecto" />
-        <Button text="Subir foto de la autora" />
+        <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto del proyecto" />
+        <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto de la autora" />
+
         <button className="button--large">Guardar proyecto</button>
       </fieldset>
     </form>

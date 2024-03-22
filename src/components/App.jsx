@@ -17,6 +17,7 @@ function App() {
   const [userName, setUserName] = useState("Emmelie Björklund");
   const [userJob, setUserJob] = useState("Full Stack Developer");*/
 
+  const [updateAvatar, setUpdateAvatar] = useState(`url('/src/images/avatar.webp')`);
   const [addFormData, setAddFormData] = useState({
 
     projectName: "",
@@ -56,10 +57,10 @@ function App() {
         </section>
 
         <Preview
-          addFormData={addFormData} setAddFormData={setAddFormData}
+          addFormData={addFormData} setAddFormData={setAddFormData} updateAvatar={updateAvatar}
         />
 
-        <Form handleFormAdd={handleFormAdd} addFormData={addFormData} />
+        <Form handleFormAdd={handleFormAdd} addFormData={addFormData} setUpdateAvatar={setUpdateAvatar} />
       </main>
 
       <Footer />
