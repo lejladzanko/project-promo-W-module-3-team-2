@@ -2,13 +2,12 @@ import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
 
 function Preview({
-  addFormData, updateAvatar }) {
-
+  addFormData, updateAvatar, updateProjectImg, previewUrl, handleReset }) {
 
 
   return (
     <section className="preview">
-      <div className="projectImage"></div>
+      <div className="projectImage" style={{ backgroundImage: `url(${updateProjectImg})` }}>  </div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
@@ -29,6 +28,13 @@ function Preview({
           <h3 className="card__descriptionTitle">Product description</h3>
           <p className="card__description">{addFormData.descriptions || `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur dolorem facere impedit aut voluptatibus nam recusandae totam adipisci illo consectetur optio nesciunt, unde natus ipsa similique asperiores ut quod quos?`}</p>
 
+          <a
+
+            href={previewUrl}
+            target="_blank"
+
+          >{previewUrl}</a>
+
           <div className="card__technicalInfo">
             <p className="card__technologies">{addFormData.usedTechs || "React Js-HTML-CSS"}</p>
 
@@ -48,6 +54,7 @@ function Preview({
             >
               GitHub link
             </a>
+            <button type="button" className="button-reset" onClick={handleReset}>Reiniciar</button>
           </div>
         </div>
       </article>
@@ -57,7 +64,10 @@ function Preview({
 
 Preview.propTypes = {
   addFormData: PropTypes.object.isRequired,
-
+  updateAvatar: PropTypes.string.isRequired,
+  updateProjectImg: PropTypes.string.isRequired,
+  previewUrl: PropTypes.string.isRequired,
+  handleReset: PropTypes.func.isRequired
 };
 
 export default Preview;

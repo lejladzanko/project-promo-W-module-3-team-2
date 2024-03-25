@@ -2,125 +2,125 @@
 
 
 .preview .projectImage {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-image: url('/src/images/illustration.png');
-    background-position: top center;
-    background-size: cover;
-  }
 
-  .preview .card {
-    margin-inline: 20px;
-  
-  }
-  
-  .card {
-    display: grid;
-    grid-template-columns: 40% 60%;
-  
-    color: $color-black;
-    font-family: $font-card-text;
-  
-    border-radius: 20px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-style: solid;
-    border-width: 1px;
-    border-image-source: linear-gradient(to bottom, $color-white 0%, rgba(0, 0, 0, 0));
-    border-image-slice: 1;
-    background-image: linear-gradient(to bottom, $color-white, $color-white), linear-gradient(to bottom, $color-white 0%, rgba(0, 0, 0, 0));
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid #E0E0E0; 
-    background-image: linear-gradient(to bottom, #FFFFFF, #F7F7F7);
-  }
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-image: url('/src/images/illustration.png');
+  background-position: top center;
+  background-size: contain;
+  background-repeat: no-repeat;
 
-  .card .card__projectTitle {
-    grid-column: 2;
-    position: relative;
-    margin: 15px 10px 1rem 0;
-    text-align: center;
-    text-transform: capitalize;
-  
-    font-family: $font-card-section;
-  }
-  
-  .card .card__projectTitle::before {
-    content: '';
-    position: absolute;
-    top: calc(50% - 1px);
-    bottom: calc(50% - 1px);
-    left: 0;
-    right: 0;
-    z-index: 0;
-  
-    background-image: linear-gradient(to right, white, #232323 15%, $color-black, #232323 85%, white);
-  }
-  
-  .card .card__projectTitle--text {
-    position: relative;
-    padding-inline: 0.1em;
-    z-index: 1;
-    background-color: $color-white;
-  }
-  
-  .card .card__author {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .card .card__authorPhoto {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    background-image: url('/src/images/avatar.webp');
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 0.8rem;
-  }
-  
-  .card .card__job {
-    margin-bottom: 0.2rem;
-  }
-  
-  .card .card__name {
-    font-family: $font-card-title;
-    margin-bottom: .2rem;
-  }
-  
-  .card .card__project {
-    margin-right: 10px;
-  }
-  
-  .card .card__slogan {
-    font-family: $font-card-subtitle;
-    margin-top: -.2rem;
-    margin-bottom: .8rem;
-  }
-  
-  .card .card__descriptionTitle {
-    font-weight: inherit;
-    text-transform: capitalize;
-  }
+}
 
-  // .card .card__description {
-  //   text-overflow: hidden; 
-  // }
-  
-  .card .card__technicalInfo {
-    display: grid;
-    grid-template-columns: 1fr 2rem 2rem;
-    gap: .5em;
-  
-    margin-block: 1.8rem;
-  }
-  
-  .card .card__technologies {
-    font-family: $font-card-tech;
-  }
+.preview .card {
+  margin-inline: 20px;
+
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 40% 60%;
+
+  color: $color-black;
+  font-family: $font-card-text;
+
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-style: solid;
+  border-width: 1px;
+  border-image-source: linear-gradient(to bottom, $color-white 0%, rgba(0, 0, 0, 0));
+  border-image-slice: 1;
+  background-image: linear-gradient(to bottom, $color-white, $color-white), linear-gradient(to bottom, $color-white 0%, rgba(0, 0, 0, 0));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #E0E0E0;
+  background-image: linear-gradient(to bottom, #FFFFFF, #F7F7F7);
+}
+
+.card .card__projectTitle {
+  grid-column: 2;
+  position: relative;
+  margin: 15px 10px 1rem 0;
+  text-align: center;
+  text-transform: capitalize;
+
+  font-family: $font-card-section;
+}
+
+.card .card__projectTitle::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1px);
+  bottom: calc(50% - 1px);
+  left: 0;
+  right: 0;
+  z-index: 0;
+
+  background-image: linear-gradient(to right, white, #232323 15%, $color-black, #232323 85%, white);
+}
+
+.card .card__projectTitle--text {
+  position: relative;
+  padding-inline: 0.1em;
+  z-index: 1;
+  background-color: $color-white;
+}
+
+.card .card__author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card .card__authorPhoto {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-image: url('/src/images/avatar.webp');
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0.8rem;
+}
+
+.card .card__job {
+  margin-bottom: 0.2rem;
+}
+
+.card .card__name {
+  font-family: $font-card-title;
+  margin-bottom: .2rem;
+}
+
+.card .card__project {
+  margin-right: 10px;
+}
+
+.card .card__slogan {
+  font-family: $font-card-subtitle;
+  margin-top: -.2rem;
+  margin-bottom: .8rem;
+}
+
+.card .card__descriptionTitle {
+  font-weight: inherit;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.card .card__technicalInfo {
+  display: grid;
+  grid-template-columns: 1fr 2rem 2rem;
+  gap: .5em;
+
+  margin-block: 1.8rem;
+}
+
+.card .card__technologies {
+  font-family: $font-card-tech;
+}
 
 .icon {
   width: 1.6rem;
@@ -133,7 +133,7 @@
 }
 
 .icon:hover {
-  opacity: 0.7; 
+  opacity: 0.7;
 }
 
 .icon__www {
@@ -142,4 +142,29 @@
 
 .icon__github {
   background-image: url('/src/images/github.svg');
+}
+
+
+.button-reset {
+  background-color: $color-light-red;
+  color: $color-white; 
+  padding: 10px 20px; 
+  font-size: 0.9rem; 
+  font-family: $font-button; 
+  border: none; 
+  border-radius: 30px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+
+  &:hover {
+    background-color: darken($color-light-red, 10%); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  }
+
+  &:focus {
+    outline: none; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
 }

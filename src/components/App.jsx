@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import defaultAvatar from "../images/avatar.webp";
+import defaultImg from "../images/illustration.png";
 import Header from "./Header";
 import Preview from "./Preview";
 import Form from "./Form";
@@ -6,20 +8,15 @@ import Footer from "./Footer";
 import "../scss/App.scss";
 
 function App() {
-  /*const [projectName, setProjectName] = useState("Personal Project Card");
-  const [slogan, setSlogan] = useState("Elegant Workspace");
-  const [repoLink, setRepoLink] = useState("");
-  const [demoLink, setDemoLink] = useState("");
-  const [usedTechs, setUsedTechs] = useState("React Js-HTML-CSS");
-  const [descriptions, setDescriptions] = useState(
-    `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur dolorem facere impedit aut voluptatibus nam recusandae totam adipisci illo consectetur optio nesciunt, unde natus ipsa similique asperiores ut quod quos?`
-  );
-  const [userName, setUserName] = useState("Emmelie Björklund");
-  const [userJob, setUserJob] = useState("Full Stack Developer");*/
+  const savedAvatar =
+    JSON.parse(localStorage.getItem("avatar")) ||
+    `url('/src/images/avatar.webp')`;
 
-  const [updateAvatar, setUpdateAvatar] = useState(`url('/src/images/avatar.webp')`);
-  const [addFormData, setAddFormData] = useState({
+  const savedImg =
+    JSON.parse(localStorage.getItem("img")) ||
+    `url('/src/images/illustration.png'`;
 
+  const savedForm = JSON.parse(localStorage.getItem("form")) || {
     projectName: "",
     slogan: "",
     repoLink: "",
@@ -28,18 +25,86 @@ function App() {
     descriptions: ``,
     userName: "",
     userJob: "",
+  };
 
-  });
+  const [updateAvatar, setUpdateAvatar] = useState(savedAvatar);
+  const [updateProjectImg, setProjectImg] = useState(savedImg);
+  const [addFormData, setAddFormData] = useState(savedForm);
+  const [previewUrl, setPreviewUrl] = useState("");
 
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(addFormData));
+    localStorage.setItem("avatar", JSON.stringify(updateAvatar));
+    localStorage.setItem("img", JSON.stringify(updateProjectImg));
+  }, [addFormData, updateAvatar, updateProjectImg]);
 
   const handleFormAdd = (event) => {
     const { name, value } = event.target;
     setAddFormData({
       ...addFormData,
-      [name]: value
+      [name]: value,
     });
-  }
+  };
 
+  const handlePost = (event) => {
+    event.preventDefault();
+    console.log("clicko");
+
+    fetch("https://dev.adalab.es/api/projectCard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: addFormData.projectName,
+        slogan: addFormData.slogan,
+        technologies: addFormData.usedTechs,
+        demo: addFormData.demoLink,
+        repo: addFormData.repoLink,
+        desc:
+          addFormData.descriptions ||
+          `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facilis? Cum officia debitis a unde aut odit. Dolorum exercitationem adipisci at vitae sed similique! Saepe iure ut amet error aut`,
+        autor: addFormData.userName,
+        job: addFormData.userJob,
+        image: updateProjectImg,
+        photo: updateAvatar,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to submit project data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.cardURL) {
+          setPreviewUrl(data.cardURL);
+        } else {
+          console.error(
+            "El campo cardURL no está presente en la respuesta de la API"
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error submitting project data:", error);
+      });
+  };
+
+  const handleReset = () => {
+    setUpdateAvatar(defaultAvatar);
+    setProjectImg(defaultImg);
+    setAddFormData({
+      projectName: "",
+      slogan: "",
+      repoLink: "",
+      demoLink: "",
+      usedTechs: "",
+      descriptions: ``,
+      userName: "",
+      userJob: "",
+    });
+    setPreviewUrl("");
+  };
 
   return (
     <div className="container">
@@ -57,10 +122,21 @@ function App() {
         </section>
 
         <Preview
-          addFormData={addFormData} setAddFormData={setAddFormData} updateAvatar={updateAvatar}
+          addFormData={addFormData}
+          setAddFormData={setAddFormData}
+          updateAvatar={updateAvatar}
+          updateProjectImg={updateProjectImg}
+          handleReset={handleReset}
         />
 
-        <Form handleFormAdd={handleFormAdd} addFormData={addFormData} setUpdateAvatar={setUpdateAvatar} />
+        <Form
+          handleFormAdd={handleFormAdd}
+          addFormData={addFormData}
+          setUpdateAvatar={setUpdateAvatar}
+          setProjectImg={setProjectImg}
+          handlePost={handlePost}
+          previewUrl={previewUrl}
+        />
       </main>
 
       <Footer />
