@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import Preview from "./Preview";
 import Form from "./Form";
@@ -8,11 +8,11 @@ import "../scss/App.scss";
 function App() {
 
 
-  const [updateAvatar, setUpdateAvatar] = useState(`url('/src/images/avatar.webp')`);
+  const savedAvatar = JSON.parse(localStorage.getItem("avatar")) || `url('/src/images/avatar.webp')`;
 
-  const [updateProjectImg, setProjectImg] = useState(`url('/src/images/illustration.png')`);
+  const savedImg = JSON.parse(localStorage.getItem("img")) || `url('/src/images/illustration.png'`;
 
-  const [addFormData, setAddFormData] = useState({
+  const savedForm = JSON.parse(localStorage.getItem("form")) || ({
 
     projectName: "",
     slogan: "",
@@ -24,6 +24,19 @@ function App() {
     userJob: "",
 
   });
+
+  const [updateAvatar, setUpdateAvatar] = useState(savedAvatar);
+
+  const [updateProjectImg, setProjectImg] = useState(savedImg);
+
+  const [addFormData, setAddFormData] = useState(savedForm);
+
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(addFormData));
+    localStorage.setItem("avatar", JSON.stringify(updateAvatar));
+    localStorage.setItem("img", JSON.stringify(updateProjectImg));
+
+  }, [addFormData, updateAvatar, updateProjectImg]);
 
 
   const handleFormAdd = (event) => {
