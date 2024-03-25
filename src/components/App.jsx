@@ -31,6 +31,8 @@ function App() {
 
   const [addFormData, setAddFormData] = useState(savedForm);
 
+  const [cardURL, setCardURL] = useState(''); 
+
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(addFormData));
     localStorage.setItem("avatar", JSON.stringify(updateAvatar));
@@ -46,14 +48,29 @@ function App() {
   };
 
   //URL
-  let URL = "https://dev.adalab.es/api/projectCard/";
+ 
+  const URL = "https://dev.adalab.es/api/projectCard/";
 
   const handlePost = (event) => {
     event.preventDefault();
 
-    fetch("https://dev.adalab.es/api/projectCard/", {
+    const dataToSend = {...addFormData, 
+      name: addFormData.projectName,
+      slogan: addFormData.slogan,
+      repo: addFormData.repoLink,
+      demo: addFormData.demoLink,
+      technologies: addFormData.usedTechs,
+      desc: addFormData.descriptions,
+      autor: addFormData.userName,
+      job: addFormData.userJob,
+      // Asegúrate de que 'image' contenga una URL o un dato válido que la API espere
+      photo: savedAvatar,
+      image: savedImg
+    };
+
+    fetch(URL, {
       method: "POST",
-      body: JSON.stringify(addFormData),
+      body: JSON.stringify(dataToSend),
       headers: { "Content-type": "application/json" },
     })
       .then((response) => {
@@ -61,18 +78,29 @@ function App() {
         return response.json();
       })
       .then((result) => {
-        result.URL;
-        console.log(result.URL);
+        //const cardURL = result.URL;
+        if (result.success && result.URL) {
+          setCardURL(result.URL);
+        } else {
+          // Manejar el error si la API devuelve 'success: false'
+          console.error("Error en la respuesta de la API:", result.error);
+        }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error("Error al hacer la solicitud POST:", error));
   };
+  
 
   return (
     <div className="container">
       <Header />
 
       <main className="main">
+      
         <section className="hero">
+          <div className="URLcontainer">
+            {cardURL && <a href={cardURL} target="_blank" rel="noopener noreferrer">Ver Tarjeta</a>}  
+          </div>
+        
           <h2 className="title">Proyectos molones</h2>
           <p className="hero__text">
             Escaparate en línea para recoger ideas a través de la tecnología
