@@ -107,11 +107,8 @@
 .card .card__descriptionTitle {
   font-weight: inherit;
   text-transform: capitalize;
+  font-weight: bold;
 }
-
-// .card .card__description {
-//   text-overflow: hidden; 
-// }
 
 .card .card__technicalInfo {
   display: grid;
@@ -145,4 +142,29 @@
 
 .icon__github {
   background-image: url('/src/images/github.svg');
+}
+
+
+.button-reset {
+  background-color: $color-light-red;
+  color: $color-white; 
+  padding: 10px 20px; 
+  font-size: 0.9rem; 
+  font-family: $font-button; 
+  border: none; 
+  border-radius: 30px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+
+  &:hover {
+    background-color: darken($color-light-red, 10%); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  }
+
+  &:focus {
+    outline: none; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
 }

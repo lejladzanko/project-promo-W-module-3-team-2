@@ -2,8 +2,7 @@ import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
 
 function Preview({
-  addFormData, updateAvatar, updateProjectImg, previewUrl }) {
-
+  addFormData, updateAvatar, updateProjectImg, previewUrl, handleReset }) {
 
 
   return (
@@ -55,6 +54,7 @@ function Preview({
             >
               GitHub link
             </a>
+            <button type="button" className="button-reset" onClick={handleReset}>Reiniciar</button>
           </div>
         </div>
       </article>
@@ -65,7 +65,9 @@ function Preview({
 Preview.propTypes = {
   addFormData: PropTypes.object.isRequired,
   updateAvatar: PropTypes.string.isRequired,
-  updateProjectImg: PropTypes.string.isRequired
+  updateProjectImg: PropTypes.string.isRequired,
+  previewUrl: PropTypes.string.isRequired,
+  handleReset: PropTypes.func.isRequired
 };
 
 export default Preview;

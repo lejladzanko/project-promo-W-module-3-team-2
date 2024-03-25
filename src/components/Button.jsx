@@ -12,6 +12,7 @@ function Button(props) {
   );
 }
 
+
 Button.propTypes = {
   text: PropTypes.string.isRequired,
 };

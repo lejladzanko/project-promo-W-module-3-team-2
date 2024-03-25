@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import defaultAvatar from "../images/avatar.webp";
+import defaultImg from "../images/illustration.png";
 import Header from "./Header";
 import Preview from "./Preview";
 import Form from "./Form";
@@ -28,7 +30,7 @@ function App() {
   const [updateAvatar, setUpdateAvatar] = useState(savedAvatar);
   const [updateProjectImg, setProjectImg] = useState(savedImg);
   const [addFormData, setAddFormData] = useState(savedForm);
-  const [previewUrl, setPreviewUrl] = useState('');
+  const [previewUrl, setPreviewUrl] = useState("");
 
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(addFormData));
@@ -44,16 +46,14 @@ function App() {
     });
   };
 
-
   const handlePost = (event) => {
     event.preventDefault();
-    console.log("clicko")
+    console.log("clicko");
 
     fetch("https://dev.adalab.es/api/projectCard", {
-
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: addFormData.projectName,
@@ -61,12 +61,14 @@ function App() {
         technologies: addFormData.usedTechs,
         demo: addFormData.demoLink,
         repo: addFormData.repoLink,
-        desc: addFormData.descriptions,
+        desc:
+          addFormData.descriptions ||
+          `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facilis? Cum officia debitis a unde aut odit. Dolorum exercitationem adipisci at vitae sed similique! Saepe iure ut amet error aut`,
         autor: addFormData.userName,
         job: addFormData.userJob,
         image: updateProjectImg,
-        photo: updateAvatar
-      })
+        photo: updateAvatar,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -76,18 +78,33 @@ function App() {
       })
       .then((data) => {
         if (data.cardURL) {
-
           setPreviewUrl(data.cardURL);
         } else {
-          console.error("El campo cardURL no está presente en la respuesta de la API");
+          console.error(
+            "El campo cardURL no está presente en la respuesta de la API"
+          );
         }
       })
       .catch((error) => {
         console.error("Error submitting project data:", error);
       });
+  };
 
-
-  }
+  const handleReset = () => {
+    setUpdateAvatar(defaultAvatar);
+    setProjectImg(defaultImg);
+    setAddFormData({
+      projectName: "",
+      slogan: "",
+      repoLink: "",
+      demoLink: "",
+      usedTechs: "",
+      descriptions: ``,
+      userName: "",
+      userJob: "",
+    });
+    setPreviewUrl("");
+  };
 
   return (
     <div className="container">
@@ -109,7 +126,7 @@ function App() {
           setAddFormData={setAddFormData}
           updateAvatar={updateAvatar}
           updateProjectImg={updateProjectImg}
-
+          handleReset={handleReset}
         />
 
         <Form
@@ -119,8 +136,6 @@ function App() {
           setProjectImg={setProjectImg}
           handlePost={handlePost}
           previewUrl={previewUrl}
-
-
         />
       </main>
 
