@@ -109,7 +109,6 @@ function App() {
           setAddFormData={setAddFormData}
           updateAvatar={updateAvatar}
           updateProjectImg={updateProjectImg}
-          previewUrl={previewUrl}
 
         />
 
@@ -119,6 +118,8 @@ function App() {
           setUpdateAvatar={setUpdateAvatar}
           setProjectImg={setProjectImg}
           handlePost={handlePost}
+          previewUrl={previewUrl}
+
 
         />
       </main>

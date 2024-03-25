@@ -3,7 +3,7 @@ import GetAvatar from "./GetAvatar";
 import "../scss/components/Form.scss";
 import PropTypes from "prop-types";
 
-function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, handlePost
+function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, handlePost, previewUrl
 }) {
 
 
@@ -70,7 +70,14 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, hand
       <fieldset className="addForm__group--upload">
         <GetAvatar setUpdateAvatar={setProjectImg} text="Subir foto del proyecto" />
         <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto de la autora" />
+        <div className="buttons-container">
         <button className="button--large" onClick={handlePost}>Guardar proyecto</button>
+        {previewUrl && (
+        <div className="URLcontainer">
+          <a href={previewUrl} target="_blank">Ver Tarjeta</a>
+        </div>
+      )}
+      </div>
       </fieldset>
     </form>
   );
