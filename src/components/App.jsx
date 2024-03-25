@@ -63,9 +63,9 @@ function App() {
       desc: addFormData.descriptions,
       autor: addFormData.userName,
       job: addFormData.userJob,
-      // Asegúrate de que 'image' contenga una URL o un dato válido que la API espere
-      photo: savedAvatar,
-      image: savedImg
+      image: updateProjectImg.replace('url(', '').replace(')', '').replace("'", "").replace("'", ""), // Ajusta para enviar solo la URL de la imagen
+      photo: updateAvatar.replace('url(', '').replace(')', '').replace("'", "").replace("'", "") // Ajusta para enviar solo la URL del avatar
+  };
     };
 
     fetch(URL, {
@@ -74,7 +74,7 @@ function App() {
       headers: { "Content-type": "application/json" },
     })
       .then((response) => {
-        console.log("aprobado"); // Coloca aquí el console.log
+        console.log(response); // Coloca aquí el console.log
         return response.json();
       })
       .then((result) => {
@@ -87,7 +87,8 @@ function App() {
         }
       })
       .catch((error) => console.error("Error al hacer la solicitud POST:", error));
-  };
+  
+
   
 
   return (
@@ -129,6 +130,7 @@ function App() {
       <Footer />
     </div>
   );
+
 }
 
 export default App;
