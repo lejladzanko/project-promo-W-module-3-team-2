@@ -2,7 +2,7 @@ import "../scss/components/Preview.scss";
 import PropTypes from "prop-types";
 
 function Preview({
-  addFormData, updateAvatar, updateProjectImg }) {
+  addFormData, updateAvatar, updateProjectImg, previewUrl }) {
 
 
 
@@ -28,6 +28,13 @@ function Preview({
           <p className="card__slogan">{addFormData.slogan || "Elegant Workspace"}</p>
           <h3 className="card__descriptionTitle">Product description</h3>
           <p className="card__description">{addFormData.descriptions || `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur dolorem facere impedit aut voluptatibus nam recusandae totam adipisci illo consectetur optio nesciunt, unde natus ipsa similique asperiores ut quod quos?`}</p>
+
+          <a
+
+            href={previewUrl}
+            target="_blank"
+
+          >{previewUrl}</a>
 
           <div className="card__technicalInfo">
             <p className="card__technologies">{addFormData.usedTechs || "React Js-HTML-CSS"}</p>

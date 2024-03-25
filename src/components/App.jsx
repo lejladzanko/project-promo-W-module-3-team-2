@@ -26,12 +26,9 @@ function App() {
   };
 
   const [updateAvatar, setUpdateAvatar] = useState(savedAvatar);
-
   const [updateProjectImg, setProjectImg] = useState(savedImg);
-
   const [addFormData, setAddFormData] = useState(savedForm);
-
-  const [cardURL, setCardURL] = useState(''); 
+  const [previewUrl, setPreviewUrl] = useState('');
 
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(addFormData));
@@ -47,61 +44,57 @@ function App() {
     });
   };
 
-  //URL
- 
-  const URL = "https://dev.adalab.es/api/projectCard/";
 
   const handlePost = (event) => {
     event.preventDefault();
+    console.log("clicko")
 
-    const dataToSend = {...addFormData, 
-      name: addFormData.projectName,
-      slogan: addFormData.slogan,
-      repo: addFormData.repoLink,
-      demo: addFormData.demoLink,
-      technologies: addFormData.usedTechs,
-      desc: addFormData.descriptions,
-      autor: addFormData.userName,
-      job: addFormData.userJob,
-      image: updateProjectImg.replace('url(', '').replace(')', '').replace("'", "").replace("'", ""), // Ajusta para enviar solo la URL de la imagen
-      photo: updateAvatar.replace('url(', '').replace(')', '').replace("'", "").replace("'", "") // Ajusta para enviar solo la URL del avatar
-  };
-    };
+    fetch("https://dev.adalab.es/api/projectCard", {
 
-    fetch(URL, {
       method: "POST",
-      body: JSON.stringify(dataToSend),
-      headers: { "Content-type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: addFormData.projectName,
+        slogan: addFormData.slogan,
+        technologies: addFormData.usedTechs,
+        demo: addFormData.demoLink,
+        repo: addFormData.repoLink,
+        desc: addFormData.descriptions,
+        autor: addFormData.userName,
+        job: addFormData.userJob,
+        image: updateProjectImg,
+        photo: updateAvatar
+      })
     })
       .then((response) => {
-        console.log(response); // Coloca aquí el console.log
+        if (!response.ok) {
+          throw new Error("Failed to submit project data");
+        }
         return response.json();
       })
-      .then((result) => {
-        //const cardURL = result.URL;
-        if (result.success && result.URL) {
-          setCardURL(result.URL);
+      .then((data) => {
+        if (data.cardURL) {
+
+          setPreviewUrl(data.cardURL);
         } else {
-          // Manejar el error si la API devuelve 'success: false'
-          console.error("Error en la respuesta de la API:", result.error);
+          console.error("El campo cardURL no está presente en la respuesta de la API");
         }
       })
-      .catch((error) => console.error("Error al hacer la solicitud POST:", error));
-  
+      .catch((error) => {
+        console.error("Error submitting project data:", error);
+      });
 
-  
+
+  }
 
   return (
     <div className="container">
       <Header />
 
       <main className="main">
-      
         <section className="hero">
-          <div className="URLcontainer">
-            {cardURL && <a href={cardURL} target="_blank" rel="noopener noreferrer">Ver Tarjeta</a>}  
-          </div>
-        
           <h2 className="title">Proyectos molones</h2>
           <p className="hero__text">
             Escaparate en línea para recoger ideas a través de la tecnología
@@ -116,6 +109,8 @@ function App() {
           setAddFormData={setAddFormData}
           updateAvatar={updateAvatar}
           updateProjectImg={updateProjectImg}
+          previewUrl={previewUrl}
+
         />
 
         <Form
@@ -124,13 +119,13 @@ function App() {
           setUpdateAvatar={setUpdateAvatar}
           setProjectImg={setProjectImg}
           handlePost={handlePost}
+
         />
       </main>
 
       <Footer />
     </div>
   );
-
 }
 
 export default App;
