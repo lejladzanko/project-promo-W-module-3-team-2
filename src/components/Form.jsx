@@ -3,7 +3,7 @@ import GetAvatar from "./GetAvatar";
 import "../scss/components/Form.scss";
 import PropTypes from "prop-types";
 
-function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg
+function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, handlePost
 }) {
 
 
@@ -70,7 +70,7 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg
       <fieldset className="addForm__group--upload">
         <GetAvatar setUpdateAvatar={setProjectImg} text="Subir foto del proyecto" />
         <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto de la autora" />
-        <button className="button--large">Guardar proyecto</button>
+        <button className="button--large" onClick={handlePost}>Guardar proyecto</button>
       </fieldset>
     </form>
   );
@@ -78,7 +78,10 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg
 
 Form.propTypes = {
   handleFormAdd: PropTypes.func.isRequired,
-
+  addFormData: PropTypes.object.isRequired,
+  setUpdateAvatar: PropTypes.func.isRequired,
+  setProjectImg: PropTypes.func.isRequired, 
+  handlePost: PropTypes.func.isRequired,
 }
 export default Form;
 

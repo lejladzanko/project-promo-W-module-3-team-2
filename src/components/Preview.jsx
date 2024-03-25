@@ -57,7 +57,8 @@ function Preview({
 
 Preview.propTypes = {
   addFormData: PropTypes.object.isRequired,
-
+  updateAvatar: PropTypes.string.isRequired,
+  updateProjectImg: PropTypes.string.isRequired
 };
 
 export default Preview;
