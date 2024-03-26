@@ -12,11 +12,12 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, hand
       <h2 className="title">Información</h2>
       <fieldset className="addForm__group">
         <legend className="addForm__title">Cuéntanos sobre el proyecto</legend>
+        <span className="mandatoryInputs">Los campos marcados con * son obligatorios</span>
         <input className="addForm__input" type="text"
           name="projectName"
           value={addFormData.projectName}
           id="name"
-          placeholder="Nombre del proyecto" onChange={handleFormAdd} />
+          placeholder="Nombre del proyecto *" onChange={handleFormAdd} />
         <input className="addForm__input" type="text"
           name="slogan"
           value={addFormData.slogan}
@@ -28,7 +29,7 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, hand
             name="repoLink"
             value={addFormData.repoLink}
             id="repo"
-            placeholder="Repositorio"
+            placeholder="Repositorio *"
             onChange={handleFormAdd} />
           <input className="addForm__input" type="url"
             name="demoLink"
@@ -47,7 +48,7 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, hand
           name="descriptions"
           value={addFormData.descriptions}
           id="desc"
-          placeholder="Descripción"
+          placeholder="Descripción *"
           rows="5"
           onChange={handleFormAdd} ></textarea>
       </fieldset>
@@ -58,26 +59,26 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, hand
           type="text"
           value={addFormData.userName}
           name="userName" id="autor"
-          placeholder="Nombre"
+          placeholder="Nombre *"
           onChange={handleFormAdd} />
         <input className="addForm__input" type="text"
           name="userJob"
           value={addFormData.userJob}
           id="job"
-          placeholder="Trabajo"
+          placeholder="Trabajo *"
           onChange={handleFormAdd} />
       </fieldset>
       <fieldset className="addForm__group--upload">
         <GetAvatar setUpdateAvatar={setProjectImg} text="Subir foto del proyecto" />
         <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto de la autora" />
         <div className="buttons-container">
-        <button className="button--large" onClick={handlePost}>Guardar proyecto</button>
-        {previewUrl && (
-        <div className="URLcontainer">
-          <a href={previewUrl} target="_blank">Ver Tarjeta</a>
+          <button className="button--large" onClick={handlePost}>Guardar proyecto</button>
+          {previewUrl && (
+            <div className="URLcontainer">
+              <a href={previewUrl} target="_blank">Ver Tarjeta</a>
+            </div>
+          )}
         </div>
-      )}
-      </div>
       </fieldset>
     </form>
   );
@@ -87,7 +88,7 @@ Form.propTypes = {
   handleFormAdd: PropTypes.func.isRequired,
   addFormData: PropTypes.object.isRequired,
   setUpdateAvatar: PropTypes.func.isRequired,
-  setProjectImg: PropTypes.func.isRequired, 
+  setProjectImg: PropTypes.func.isRequired,
   handlePost: PropTypes.func.isRequired,
 }
 export default Form;
