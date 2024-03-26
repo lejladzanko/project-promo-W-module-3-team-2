@@ -68,7 +68,9 @@
 
 .addForm .addForm__group--upload {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
   margin-bottom: 25px;
   border: none;
