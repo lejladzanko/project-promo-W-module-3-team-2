@@ -1,25 +1,45 @@
+@import '../core/Variables';
+
+
 .get-avatar {
     display: flex;
-    margin: 30px 0;
+    //flex-direction: column;
+    //margin: 15px 0;
+    margin-bottom: 25px;
   }
   
   .get-avatar__label {
     cursor: pointer;
     display: flex;
     justify-content: center;
-    align-items: center;
+    //text-align: center;
     box-sizing: border-box;
-    background: deeppink;
+    background: rgb(213, 183, 199);
+    //background-color: $color-dark-lilac;
+    backdrop-filter: blur(10px);
     border-radius: 15px;
-    border: 0;
-    font-family: sans-serif;
-    font-size: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-image-source: linear-gradient(to bottom, #2a2a2a 0%, rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+    border-radius: 20px;
+    border: 2px solid white; 
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    
+    font-family: $font-button;
+    color: $color-white;
+    font-size: 18px;
     padding: 10px 20px;
-    color: #fff;
+   //margin-left: 25px; 
+
+    // @media screen and (min-width:780px) {
+    //   margin-right: 10px; 
+    // }
   }
   
   .get-avatar__upload-field {
     display: none;
+
   }
   
   .get-avatar__preview {
