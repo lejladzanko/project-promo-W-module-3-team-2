@@ -43,24 +43,23 @@
 
   font-family: $font-card-section;
 }
-
 .card .card__projectTitle::before {
   content: '';
   position: absolute;
-  top: calc(50% - 1px);
-  bottom: calc(50% - 1px);
-  left: 0;
-  right: 0;
-  z-index: 0;
-
-  background-image: linear-gradient(to right, white, #232323 15%, $color-black, #232323 85%, white);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background-color: $color-black;
 }
 
 .card .card__projectTitle--text {
   position: relative;
   padding-inline: 0.1em;
   z-index: 1;
-  background-color: $color-white;
+ color: inherit;
+
 }
 
 .card .card__author {
