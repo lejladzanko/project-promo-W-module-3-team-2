@@ -51,7 +51,7 @@ function GetAvatar({ setUpdateAvatar, text }) {
 
     //  fr.result contiene los datos del fichero en un formato que se llama base64 que nos vale por que podemos usarlo para pintar una imagen en HTML
     const image = fr.result;
-    const image2 = fr.result;
+
 
     // aquí hago lifting con los datos del fichero
     // lo que haga el componente madre con esta información es otro problema diferente

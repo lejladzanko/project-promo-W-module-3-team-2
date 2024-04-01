@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import defaultAvatar from "../images/avatar.webp";
-import defaultImg from "../images/illustration.png";
 import Header from "./Header";
 import Preview from "./Preview";
 import Form from "./Form";
@@ -8,13 +6,15 @@ import Footer from "./Footer";
 import "../scss/App.scss";
 
 function App() {
+
+  const defaultAvatar = "https://historiaespana.es/wp-content/uploads/diego_velazquez.jpg";
+  const defaultImg = "https://i.blogs.es/8c3042/meninas/1366_2000.jpg";
+
   const savedAvatar =
-    JSON.parse(localStorage.getItem("avatar")) ||
-    `url('/src/images/avatar.webp')`;
+    JSON.parse(localStorage.getItem("avatar"));
 
   const savedImg =
-    JSON.parse(localStorage.getItem("img")) ||
-    `url('/src/images/illustration.png'`;
+    JSON.parse(localStorage.getItem("img"));
 
   const savedForm = JSON.parse(localStorage.getItem("form")) || {
     projectName: "",
@@ -27,8 +27,8 @@ function App() {
     userJob: "",
   };
 
-  const [updateAvatar, setUpdateAvatar] = useState(savedAvatar);
-  const [updateProjectImg, setProjectImg] = useState(savedImg);
+  const [updateAvatar, setUpdateAvatar] = useState(savedAvatar ? savedAvatar : defaultAvatar);
+  const [updateProjectImg, setProjectImg] = useState(savedImg ? savedImg : defaultImg);
   const [addFormData, setAddFormData] = useState(savedForm);
   const [previewUrl, setPreviewUrl] = useState("");
 
@@ -65,18 +65,25 @@ function App() {
         autor: addFormData.userName,
         job: addFormData.userJob,
         image: updateProjectImg,
-        photo: updateAvatar,
+        photo: updateAvatar
       }),
     })
       .then((response) => {
+
+
         if (!response.ok) {
+
           throw new Error("Failed to submit project data");
         }
         return response.json();
       })
       .then((data) => {
+
         if (data.cardURL) {
+
           setPreviewUrl(data.cardURL);
+
+
         } else {
           console.error(
             "El campo cardURL no está presente en la respuesta de la API"
