@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Preview from "./Preview";
 import Form from "./Form";
@@ -111,15 +112,16 @@ function App() {
   return (
     <div className="container">
       <Routes>
-      <Route path="/" element={
-        <>
-         <Header />
-        <LandingPage />
-        <Footer />
-        </>
-       
-
-      } />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <LandingPage />
+              <Footer />
+            </>
+          }
+        />
 
         <Route
           path="/card"
@@ -129,7 +131,9 @@ function App() {
 
               <main className="main">
                 <section className="hero">
-                  <h2 className="title">Proyectos Paintones</h2>
+                  <Link to="/" style={{ textDecoration: 'none' }}>
+                    <h2 className="title">Proyectos Paintones</h2>
+                  </Link>
                   <p className="hero__text">
                     Escaparate en línea para recoger ideas a través de la
                     tecnología
