@@ -110,34 +110,18 @@ function App() {
 
   return (
     <div className="container">
-      <Routes>
-      <Route path="/" element={
-        <>
-         <Header />
-        <LandingPage />
-        <Footer />
-        </>
-       
+      <Header />
 
-      } />
-
-        <Route
-          path="/card"
-          element={
-            <>
-              <Header />
-
-              <main className="main">
-                <section className="hero">
-                  <h2 className="title">Proyectos molones</h2>
-                  <p className="hero__text">
-                    Escaparate en línea para recoger ideas a través de la
-                    tecnología
-                  </p>
-                  <a className="button--link" href="./">
-                    Ver proyectos
-                  </a>
-                </section>
+      <main className="main">
+        <section className="hero">
+          <h2 className="title">Proyectos Pintones</h2>
+          <p className="hero__text">
+            Escaparate en línea para recoger ideas a través de la tecnología
+          </p>
+          <a className="button--link" href="./">
+            Ver proyectos
+          </a>
+        </section>
 
                 <Preview
                   addFormData={addFormData}

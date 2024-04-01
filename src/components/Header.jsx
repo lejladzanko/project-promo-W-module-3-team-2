@@ -15,7 +15,7 @@ function Header() {
           src={laptopIcon}
           alt="Logo proyectos molones"
         />
-        <h1 className="header__title">Proyectos molones</h1>
+        <h1 className="header__title">Proyectos Pintones</h1>
       </a>
       <Logo />
     </header>
