@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import Preview from "./Preview";
 import Form from "./Form";
 import Footer from "./Footer";
+import LandingPage from "./LandingPage";
 import "../scss/App.scss";
 
 function App() {
-
-  const defaultAvatar = "https://historiaespana.es/wp-content/uploads/diego_velazquez.jpg";
+  const defaultAvatar =
+    "https://historiaespana.es/wp-content/uploads/diego_velazquez.jpg";
   const defaultImg = "https://i.blogs.es/8c3042/meninas/1366_2000.jpg";
 
-  const savedAvatar =
-    JSON.parse(localStorage.getItem("avatar"));
+  const savedAvatar = JSON.parse(localStorage.getItem("avatar"));
 
-  const savedImg =
-    JSON.parse(localStorage.getItem("img"));
+  const savedImg = JSON.parse(localStorage.getItem("img"));
 
   const savedForm = JSON.parse(localStorage.getItem("form")) || {
     projectName: "",
@@ -28,8 +27,12 @@ function App() {
     userJob: "",
   };
 
-  const [updateAvatar, setUpdateAvatar] = useState(savedAvatar ? savedAvatar : defaultAvatar);
-  const [updateProjectImg, setProjectImg] = useState(savedImg ? savedImg : defaultImg);
+  const [updateAvatar, setUpdateAvatar] = useState(
+    savedAvatar ? savedAvatar : defaultAvatar
+  );
+  const [updateProjectImg, setProjectImg] = useState(
+    savedImg ? savedImg : defaultImg
+  );
   const [addFormData, setAddFormData] = useState(savedForm);
   const [previewUrl, setPreviewUrl] = useState("");
 
@@ -66,25 +69,18 @@ function App() {
         autor: addFormData.userName,
         job: addFormData.userJob,
         image: updateProjectImg,
-        photo: updateAvatar
+        photo: updateAvatar,
       }),
     })
       .then((response) => {
-
-
         if (!response.ok) {
-
           throw new Error("Failed to submit project data");
         }
         return response.json();
       })
       .then((data) => {
-
         if (data.cardURL) {
-
           setPreviewUrl(data.cardURL);
-
-
         } else {
           console.error(
             "El campo cardURL no está presente en la respuesta de la API"
@@ -114,40 +110,58 @@ function App() {
 
   return (
     <div className="container">
+      <Routes>
+      <Route path="/" element={
+        <>
+         <Header />
+        <LandingPage />
+        <Footer />
+        </>
+       
 
+      } />
 
-      <Header />
+        <Route
+          path="/card"
+          element={
+            <>
+              <Header />
 
-      <main className="main">
-        <section className="hero">
-          <h2 className="title">Proyectos molones</h2>
-          <p className="hero__text">
-            Escaparate en línea para recoger ideas a través de la tecnología
-          </p>
-          <a className="button--link" href="./">
-            Ver proyectos
-          </a>
-        </section>
+              <main className="main">
+                <section className="hero">
+                  <h2 className="title">Proyectos molones</h2>
+                  <p className="hero__text">
+                    Escaparate en línea para recoger ideas a través de la
+                    tecnología
+                  </p>
+                  <a className="button--link" href="./">
+                    Ver proyectos
+                  </a>
+                </section>
 
-        <Preview
-          addFormData={addFormData}
-          setAddFormData={setAddFormData}
-          updateAvatar={updateAvatar}
-          updateProjectImg={updateProjectImg}
-          handleReset={handleReset}
+                <Preview
+                  addFormData={addFormData}
+                  setAddFormData={setAddFormData}
+                  updateAvatar={updateAvatar}
+                  updateProjectImg={updateProjectImg}
+                  handleReset={handleReset}
+                />
+
+                <Form
+                  handleFormAdd={handleFormAdd}
+                  addFormData={addFormData}
+                  setUpdateAvatar={setUpdateAvatar}
+                  setProjectImg={setProjectImg}
+                  handlePost={handlePost}
+                  previewUrl={previewUrl}
+                />
+              </main>
+
+              <Footer />
+            </>
+          }
         />
-
-        <Form
-          handleFormAdd={handleFormAdd}
-          addFormData={addFormData}
-          setUpdateAvatar={setUpdateAvatar}
-          setProjectImg={setProjectImg}
-          handlePost={handlePost}
-          previewUrl={previewUrl}
-        />
-      </main>
-
-      <Footer />
+      </Routes>
     </div>
   );
 }

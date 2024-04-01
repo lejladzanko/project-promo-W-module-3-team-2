@@ -1,0 +1,36 @@
+.landingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0 40px 0;
+
+    &__title {
+        font-size: 35px;
+        color: white;
+    }
+
+    &__mainImage {
+        width: 50vw;
+        border-radius: 8px;
+        box-shadow: 0 0 6px 0px rgb(201, 229, 236);
+    }
+
+    &__button {
+        font-size: 16px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        background-color: white;
+        color: rgb(73, 97, 92);
+        border: transparent;
+        box-shadow: 0 0 3px 0.5px rgb(201, 229, 236);
+        cursor: pointer;
+
+        &:hover {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+    }
+
+}
