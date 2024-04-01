@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import mainImage from "../images/birth-venus.jpg.avif";
+import mainImage from "../images/logo-landing.jpg";
 import "../scss/components/LandingPage.scss";
 
 function LandingPage() {
@@ -9,7 +9,7 @@ function LandingPage() {
       <img
         className="landingContainer__mainImage"
         src={mainImage}
-        alt="birth-of-venus"
+        alt="proyectos-paintones"
       />
       <Link to="/card">
         <button className="landingContainer__button">Create card</button>

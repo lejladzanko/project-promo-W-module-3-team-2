@@ -17,7 +17,7 @@
 
 .container {
   padding: 22px 22px 0 22px;
-  background-color: $color-dark;
+  background-color: #F1DAC4;
 }
 
 @media screen and (min-width: 768px) {
@@ -48,16 +48,17 @@
 .hero .title {
   font-family: $font-title-big;
   margin-bottom: 8px;
-  color: $color-white;
-  font-size: 30px;
+  color: #474973;
+  font-size: 60px;
 }
 
 .hero .hero__text {
   font-family: $font-text-big;
-  color: $color-white;
+  color: #474973;
   text-align: center;
   margin-inline: 4rem;
   margin-bottom: 1.8rem;
+  font-size: 30px;
 }
 
 
