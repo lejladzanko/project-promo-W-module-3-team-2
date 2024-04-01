@@ -1,6 +1,5 @@
 @import '../core/Variables';
 
-
 .preview .projectImage {
 
   width: 100%;
@@ -110,6 +109,7 @@
 
 .card .card__technicalInfo {
   display: grid;
+  justify-content: end;
   grid-template-columns: 1fr 2rem 2rem;
   gap: .5em;
 
@@ -166,3 +166,4 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 }
+
