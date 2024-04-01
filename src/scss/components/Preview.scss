@@ -4,11 +4,12 @@
 .preview .projectImage {
 
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background-image: url('/src/images/illustration.png');
-  background-position: top center;
-  background-size: contain;
+  aspect-ratio: 1 / 0.8;
+  //background-image: url('/src/images/illustration.png');
+  background-position: bottom center;
+  background-size: cover;
   background-repeat: no-repeat;
+  border-radius: 20px;
 
 }
 
@@ -79,7 +80,7 @@
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  background-image: url('/src/images/avatar.webp');
+  //background-image: url('/src/images/avatar.webp');
   background-position: center;
   background-size: cover;
   margin-bottom: 0.8rem;
@@ -147,24 +148,24 @@
 
 .button-reset {
   background-color: $color-light-red;
-  color: $color-white; 
-  padding: 10px 20px; 
-  font-size: 0.9rem; 
-  font-family: $font-button; 
-  border: none; 
-  border-radius: 30px; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
-  text-transform: uppercase; 
-  letter-spacing: 1px; 
+  color: $color-white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-family: $font-button;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 
   &:hover {
-    background-color: darken($color-light-red, 10%); 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    background-color: darken($color-light-red, 10%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
   &:focus {
-    outline: none; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-}
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
 }
