@@ -69,8 +69,11 @@ function Form({ handleFormAdd, addFormData, setUpdateAvatar, setProjectImg, hand
           onChange={handleFormAdd} />
       </fieldset>
       <fieldset className="addForm__group--upload">
+        <div className="buttons-upload-container">
         <GetAvatar setUpdateAvatar={setProjectImg} text="Subir foto del proyecto" />
         <GetAvatar setUpdateAvatar={setUpdateAvatar} text="Subir foto de la autora" />
+        </div>
+       
         <div className="buttons-container">
           <button className="button--large" onClick={handlePost}>Guardar proyecto</button>
           {previewUrl && (
